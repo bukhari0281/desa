@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\about_controller;
+use App\Http\Controllers\admin_controller;
+use App\Http\Controllers\blog_controller;
 use App\Http\Controllers\profile_controller;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +20,10 @@ Route::get('/', function () {
     return view('utils_client.layout');
 });
 
-Route::get('/about', [about_controller::class, 'index'])->name('about');
+Route::get('/profil', [profile_controller::class, 'index'])->name('profil');
+
+Route::prefix('admin')->name('admin.')->group(function () {
+});
+Route::get('/admin', [admin_controller::class, 'index'])->name('admin');
+Route::get('/blog', [blog_controller::class, 'index'])->name('blog');
+

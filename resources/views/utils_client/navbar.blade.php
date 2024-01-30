@@ -8,10 +8,29 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">Portfolio</a></li>
-                <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="#portfolio">Home</a></li>
+                    
+                <li class="nav-item">
+                    <!-- <a class="nav-link" href="{{ route('profil') }}">Profil</a> -->
+                    <div class="btn-group">
+                        <button class="btn nav-link">
+                            Profil
+                        </button>
+                        <button type="button" class="btn dropdown-toggle dropdown-toggle-split color-white" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="visually-hidden">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu bg-dark">
+                            <li class="nav-item"><a class="nav-link" href="#team">Sejarah</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#team">Visi Misi</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#team">Kontak</a></li>
+                            
+                        </ul>
+                    </div>  
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#team">Paket Wisata</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Blog</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Daftar Wisata</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Lapak UMKM</a></li>
             </ul>
         </div>
     </div>
