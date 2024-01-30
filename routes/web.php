@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\about_controller;
+use App\Http\Controllers\profile_controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('utils.layout');
+    return view('utils_client.layout');
 });
 
-
-Route::get('/admin', [App\Http\Controllers\admin_controller::class, 'index']);
+Route::get('/about', [about_controller::class, 'index'])->name('about');
