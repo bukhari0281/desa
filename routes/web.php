@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin_controller;
 use App\Http\Controllers\blog_controller;
+use App\Http\Controllers\category_controller;
 use App\Http\Controllers\profile_controller;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +27,5 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 Route::get('/admin', [admin_controller::class, 'index'])->name('admin');
 Route::get('/blog', [blog_controller::class, 'index'])->name('blog');
+Route::resource('categories', category_controller::class);
 
