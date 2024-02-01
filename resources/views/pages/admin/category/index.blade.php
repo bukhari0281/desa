@@ -25,6 +25,12 @@
         </ul>
     </div>
     @endif
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+
+    @endif
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -43,7 +49,7 @@
                     <td>{{ $category->slug }}</td>
                     <td>{{ $category->created_at }}</td>
                     <td class="text-center">
-                        <a href="#" class="btn btn-sm btn-outline-warning">Edit</a>
+                        <a href="#" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modalUpdate{{ $category->id }}">Edit</a>
                         <a href="#" class="btn btn-sm btn-outline-danger">Del</a>
                     </td>
                 </tr>
@@ -51,7 +57,11 @@
         </tbody>
     </table>
 </div>
+
+{{-- Modal Create --}}
 @include('pages.admin.category.create-modal')
+{{-- Modal Updated --}}
+@include('pages.admin.category.update-modal')
 @endsection
 
 

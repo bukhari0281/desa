@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use App\Models\category;
 
 class category_controller extends Controller
 {
@@ -11,7 +13,7 @@ class category_controller extends Controller
      */
     public function index()
     {
-        $categories = \App\Models\category::all();
+        $categories = category::latest()->get();
         return view('pages.admin.category.index', compact('categories'));
     }
 
@@ -31,22 +33,12 @@ class category_controller extends Controller
         $data = $request->validate([
             'name' => 'required|min:3',
         ]);
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        $data['slug'] = Str::slug($data['name']);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        Category::create($data);
+
+        return back()->with('success', 'Category created successfully');
     }
 
     /**
@@ -54,7 +46,15 @@ class category_controller extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|min:3',
+        ]);
+
+        $data['slug'] = Str::slug($data['name']);
+
+        Category::find($id)->update($data);
+
+        return back()->with('success', 'Category updated successfully');
     }
 
     /**
