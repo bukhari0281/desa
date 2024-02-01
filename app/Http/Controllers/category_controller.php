@@ -11,7 +11,8 @@ class category_controller extends Controller
      */
     public function index()
     {
-        return view('pages.admin.category.index');
+        $categories = \App\Models\category::all();
+        return view('pages.admin.category.index', compact('categories'));
     }
 
     /**
@@ -27,7 +28,9 @@ class category_controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|min:3',
+        ]);
     }
 
     /**

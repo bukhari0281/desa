@@ -27,5 +27,5 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 Route::get('/admin', [admin_controller::class, 'index'])->name('admin');
 Route::get('/blog', [blog_controller::class, 'index'])->name('blog');
-Route::resource('categories', category_controller::class);
+Route::resource('/categories', category_controller::class)->only(['index','store', 'update', 'destroy']);
 
