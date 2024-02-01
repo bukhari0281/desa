@@ -50,7 +50,7 @@
                     <td>{{ $category->created_at }}</td>
                     <td class="text-center">
                         <a href="#" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modalUpdate{{ $category->id }}">Edit</a>
-                        <a href="#" class="btn btn-sm btn-outline-danger">Del</a>
+                        <a href="#" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDelete{{ $category->id }}">Del</a>
                     </td>
                 </tr>
             @endforeach
@@ -60,8 +60,10 @@
 
 {{-- Modal Create --}}
 @include('pages.admin.category.create-modal')
-{{-- Modal Updated --}}
+{{-- Modal Update --}}
 @include('pages.admin.category.update-modal')
+{{-- Modal Delete --}}
+@include('pages.admin.category.delete-modal')
 @endsection
 
 

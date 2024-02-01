@@ -62,6 +62,8 @@ class category_controller extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Category::find($id)->delete();
+
+        return back()->with('success', 'Category deleted successfully');
     }
 }
