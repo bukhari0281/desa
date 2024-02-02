@@ -4,19 +4,19 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
 @endpush
 
-@section('title', 'List Categories - Admin')
+@section('title', 'List Posts - Admin')
 
 @section('body')
-<h1 class="mt-4">Categories</h1>
+<h1 class="mt-4">Posts</h1>
 <div class="container-fluid ">
     <div class="row p-0">
         <div class="col text-start">
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">List categories</li>
+                <li class="breadcrumb-item active">List post</li>
             </ol>
         </div>
         <div class="col text-end">
-            <a class="btn btn-md btn-primary" data-bs-toggle="modal" data-bs-target="#modalCreate">Add Category</a>
+            <a class="btn btn-md btn-primary" data-bs-toggle="modal" data-bs-target="#modalCreate">Add new post</a>
         </div>
       </div>
 </div>
@@ -41,35 +41,39 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Name</th>
-                <th>Slug</th>
-                <th>Created At</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Views</th>
+                <th>Status</th>
+                <th>Publish Date</th>
                 <th>Function</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($categories as $category)
+            @foreach ($articles as $item)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $category->name }}</td>
-                    <td>{{ $category->slug }}</td>
-                    <td>{{ $category->created_at }}</td>
-                    <td class="text-center">
-                        <a href="#" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modalUpdate{{ $category->id }}">Edit</a>
-                        <a href="#" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDelete{{ $category->id }}">Del</a>
+                    <td>{{ $item->title }}</td>
+                    <td>{{ $item->Category->name }}</td>
+                    <td>{{ $item->views }}</td>
+
+                        @if ($item->status == 0)
+                            <td class="text-danger">Draft</td>
+                        @else
+                            <td class="text-success">Published</td>
+                        @endif
+
+                    <td>{{ $item->publish_date }}</td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modalUpdate{{ $item->id }}">Detail</a>
+                        <a href="#" class="btn btn-sm btn-outline-warning text-dark" data-bs-toggle="modal" data-bs-target="#modalUpdate{{ $item->id }}">Edit</a>
+                        <a href="#" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDelete{{ $item->id }}">Del</a>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 </div>
-
-{{-- Modal Create --}}
-@include('pages.admin.category.create-modal')
-{{-- Modal Update --}}
-@include('pages.admin.category.update-modal')
-{{-- Modal Delete --}}
-@include('pages.admin.category.delete-modal')
 @endsection
 
 @push('js')

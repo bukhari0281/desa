@@ -51,7 +51,7 @@
                     </nav>
                 </div> --}}
                 <div class="sb-sidenav-menu-heading">Posts</div>
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ url('articles') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     All post
                 </a>
